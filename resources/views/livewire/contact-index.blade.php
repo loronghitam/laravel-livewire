@@ -1,6 +1,11 @@
 <div>
 
     <div class="card-header">
+        @if (session()->has('message'))
+        <div class="alert alert-success" role="alert">
+            {{ session('message') }}
+          </div>
+        @endif
         <livewire:contact-create></livewire:contact-create>
     </div>
     <!-- /.card-header -->

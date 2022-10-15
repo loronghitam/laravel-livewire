@@ -10,6 +10,19 @@ class ContactCreate extends Component
     public $name;
     public $phone;
 
+    protected $rules = [
+        'name' => 'required',
+        'phone' => 'required|min:12|max:15',
+    ];
+
+    protected $messages = [
+        'name.required' => 'Datanya engga boleh kosong',
+        'phone.required' => 'Isi data phonennya',
+        'phone.min' => 'Di indonesia no hp ada 12 digit',
+        'phone.max' => 'Maximalnya 12 digit dong, jangan batu',
+
+    ];
+
     public function render()
     {
         return view('livewire.contact-create');
@@ -17,11 +30,8 @@ class ContactCreate extends Component
 
     public function store()
     {
-        $contact = Contact::create([
-            'name' => $this->name,
-            'phone' => $this->phone,
-
-        ]);
+        $validateData = $this->validate();
+        $contact = Contact::create($validateData);
 
         $this->resetInput();
 

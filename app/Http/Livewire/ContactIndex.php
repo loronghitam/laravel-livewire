@@ -8,6 +8,7 @@ use Livewire\Component;
 
 class ContactIndex extends Component
 {
+
     // untuk emitnya sesuai dengan nama yang ada di create
     protected $listeners = [
         'contactStored' => 'handleStored',
@@ -23,6 +24,6 @@ class ContactIndex extends Component
 
     public function handleStored($contact)
     {
-        // dd($contact);
+        session()->flash('message', 'Contact ' . $contact['name'] . ' was stored');
     }
 }
