@@ -5,9 +5,12 @@ namespace App\Http\Livewire;
 use App\Contact;
 use ContactsTableSeeder;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ContactIndex extends Component
 {
+
+    use WithPagination;
     public $statusUpdate = false;
 
     // untuk emitnya sesuai dengan nama yang ada di create
@@ -19,7 +22,7 @@ class ContactIndex extends Component
     public function render()
     {
         return view('livewire.contact-index', [
-            'contacts' => Contact::latest()->get(),
+            'contacts' => Contact::latest()->paginate(5),
         ]);
     }
 
