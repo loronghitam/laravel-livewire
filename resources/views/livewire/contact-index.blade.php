@@ -35,7 +35,7 @@
                 <td>{{ $contact->phone }}</td>
                 <td>
                     <div wire:click="getContact({{ $contact->id }})" class="btn btn-sm btn-info text-white">Edit</div>
-                    <div class="btn btn-sm btn-danger text-white">Delete</div>
+                    <div wire:click="destroy({{ $contact->id }})" class="btn btn-sm btn-danger text-white">Delete</div>
                 </td>
             </tr>
             @endforeach

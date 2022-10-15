@@ -18,10 +18,18 @@ class ContactIndex extends Component
 
     public function render()
     {
-
         return view('livewire.contact-index', [
             'contacts' => Contact::latest()->get(),
         ]);
+    }
+
+    public function destroy($id)
+    {
+        if ($id) {
+            $data = Contact::find($id);
+            $data->delete();
+            session()->flash('message', 'Contact was deleted');
+        }
     }
 
     public function getContact($id)
