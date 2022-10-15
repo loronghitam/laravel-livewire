@@ -6,7 +6,13 @@
             {{ session('message') }}
           </div>
         @endif
-        <livewire:contact-create></livewire:contact-create>
+
+        @if($statusUpdate)
+            <livewire:contact-update></livewire:contact-update>
+        @else
+            <livewire:contact-create></livewire:contact-create>
+        @endif
+
     </div>
     <!-- /.card-header -->
     <table class="table table-striped">
@@ -28,7 +34,7 @@
                 <td>{{ $contact->name }}</td>
                 <td>{{ $contact->phone }}</td>
                 <td>
-                    <div class="btn btn-sm btn-info text-white">Edit</div>
+                    <div wire:click="getContact({{ $contact->id }})" class="btn btn-sm btn-info text-white">Edit</div>
                     <div class="btn btn-sm btn-danger text-white">Delete</div>
                 </td>
             </tr>

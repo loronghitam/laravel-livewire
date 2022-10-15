@@ -32,7 +32,6 @@ class ContactCreate extends Component
     {
         $validateData = $this->validate();
         $contact = Contact::create($validateData);
-
         $this->resetInput();
 
         $this->emit('contactStored', $contact);
@@ -41,6 +40,7 @@ class ContactCreate extends Component
     // Untuk merestar hasil inputan yang ada
     private function resetInput()
     {
+
         $this->name = null;
         $this->phone = null;
     }
